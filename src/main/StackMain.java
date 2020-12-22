@@ -2,7 +2,7 @@ package main;
 
 
 import data_structures.array.Stack;
-import data_structures.linked_list.Stack;
+//import data_structures.linked_list.Stack;
 
 import java.util.Scanner;
 
@@ -16,7 +16,7 @@ public class StackMain {
         Stack<String> stack=new data_structures.array.Stack<>();
 
         //Comment this line to use stack using array don't forget to comment import statement
-        Stack<String> stack=new data_structures.linked_list.Stack<>();
+        //Stack<String> stack=new data_structures.linked_list.Stack<>();
 
         String data;
         int option;
@@ -54,12 +54,12 @@ public class StackMain {
                     else
                         System.out.println("Peek operation failed");
                     break;
-//                case 4:
-//                    if(stack.isFull())// this function is only in stack using array
-//                        System.out.println("Stack is Full");
-//                    else
-//                        System.out.println("Stack is not Full");
-//                    break;
+                case 4:
+                    if(stack.isFull())// this function is only in stack using array
+                        System.out.println("Stack is Full");
+                    else
+                        System.out.println("Stack is not Full");
+                    break;
                 case 5:
                     if(stack.isEmpty())
                         System.out.println("Stack is Empty");
