@@ -10,8 +10,6 @@ public class StackMain {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
 
-        //data_structures.array.Stack this not needed you can directly import the package
-
         //Comment this line to use stack using linked list don't forget to comment import statement
         Stack<String> stack=new data_structures.array.Stack<>();
 
