@@ -55,4 +55,9 @@ public final class Stack <T> implements StackADT<T> {
     public int size() {
         return size;
     }
+
+    @Override
+    public String toString() {
+        return new ToStringClass().toString(size,top);
+    }
 }

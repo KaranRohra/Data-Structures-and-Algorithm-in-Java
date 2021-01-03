@@ -70,4 +70,9 @@ public class Queue<T> implements QueueADT<T>{
     public T removeFirst() {
         return remove();
     }
+
+    @Override
+    public String toString() {
+        return new ToStringClass().toString(size,front);
+    }
 }

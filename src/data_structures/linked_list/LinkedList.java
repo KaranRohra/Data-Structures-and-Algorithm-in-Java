@@ -5,12 +5,16 @@ interface LinkedListADT<T>{
     void add(int index,T data);
     T remove();
     T remove(int index);
+    boolean isEmpty();
+    int size();
+
 }
 public class LinkedList<T> implements LinkedListADT<T>{
     private Node<T> head;
     private Node<T> tail;
     private int size;
 
+    @Override
     public void add(T data){
         Node<T> toInsert=new Node<>(data);
         if(head==null)
@@ -23,6 +27,7 @@ public class LinkedList<T> implements LinkedListADT<T>{
         size++;
     }
 
+    @Override
     public void add(int index,T data){
         Node<T> toInsert=new Node<>(data);
 
@@ -58,30 +63,70 @@ public class LinkedList<T> implements LinkedListADT<T>{
 
     @Override
     public T remove() {
-        return null;
+        if(head==null) {
+            System.out.println("Linked list is Empty");
+            return null;
+        }
+        Node<T> data=tail;
+        tail=tail.prev;
+        if(tail==null)
+            head=null;
+        size--;
+        return data.data;
     }
 
     @Override
     public T remove(int index) {
-        return null;
+        if(head==null) {
+            System.out.println("Linked list is Empty");
+            return null;
+        }
+        if(index>=size){
+            System.out.println("Invalid index");
+            return null;
+        }
+        Node<T> p=head;
+        int i=0;
+        while (i!=index){
+            p=p.next;
+            i++;
+        }
+        Node<T> prevOfP=p.prev;
+        Node<T> aheadOfP=p.next;
+
+        if(prevOfP==null){
+            head=head.next;
+            if(head!=null)
+                head.prev=null;
+        }
+        if(aheadOfP==null){
+            tail=tail.prev;
+            if(tail!=null)
+                tail.next=null;
+        }
+        if(prevOfP!=null && aheadOfP!=null){
+            prevOfP.next=aheadOfP;
+            aheadOfP.prev=prevOfP;
+        }
+
+        p.next=null;
+        p.prev=null;
+        size--;
+        return p.data;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size==0;
+    }
+
+    @Override
+    public int size() {
+        return size;
     }
 
     @Override
     public String toString() {
-        if(size==0)
-            return "[]";
-        if(size==1){
-            return "[" +head.data + "]";
-        }
-       StringBuilder allElements=new StringBuilder();
-       Node<T> p=head;
-       allElements.append('[');
-       for(int i=0;i<size-1;i++){
-           allElements.append(p.data).append(',');
-           p=p.next;
-       }
-       allElements.append(p.data).append(']');
-       return String.valueOf(allElements);
+        return new ToStringClass().toString(size,head);
     }
-
 }
