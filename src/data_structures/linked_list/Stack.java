@@ -7,7 +7,7 @@ interface StackADT<T>{
     boolean isEmpty();
     int size();
 }
-public final class Stack <T> implements StackADT<T> {
+public class Stack <T> implements StackADT<T> {
     private Node<T> top;
     private int size;
 
