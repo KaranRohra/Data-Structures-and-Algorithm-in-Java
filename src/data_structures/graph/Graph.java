@@ -28,4 +28,15 @@ class MakeGraph{
         }
         return adj;
     }
+    public Map<Integer,ArrayList<Integer>> getGraphByMap(int[][] edges,int numberOfVertex){
+        Map<Integer,ArrayList<Integer>> adj=new HashMap<>();
+        for(int i=0;i<numberOfVertex;i++){
+            adj.put(i,new ArrayList<>());
+        }
+
+        for (int[] edge : edges) {
+            adj.get(edge[0]).add(edge[1]);
+        }
+        return adj;
+    }
 }
